@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Przelicznik jednostek: </title>
+</head>
+<body>
+
+<script>
+
+    function checkValueLenght(input, buttonId, alert) {
+        var valueOfInput = document.getElementById(input).value;
+        document.getElementById(alert).style.color = "red";
+
+        if (input == 'input2') {
+            document.getElementById("input1").value = null;
+            document.getElementById("input3").value = null;
+            if (valueOfInput > 0) showButton(buttonId, alert);
+            else if (valueOfInput <= 0) hideButton(buttonId, alert);
+        }
+
+        if (input == 'input1') {
+            document.getElementById("input2").value = null;
+            document.getElementById("input3").value = null;
+            if (valueOfInput > 0) showButton(buttonId, alert);
+            else if (valueOfInput <= 0) hideButton(buttonId, alert);
+        }
+
+        if (input == 'input3') {
+            document.getElementById("input2").value = null;
+            document.getElementById("input1").value = null;
+            if (valueOfInput > 0) showButton(buttonId, alert);
+            else if (valueOfInput <= 0) hideButton(buttonId, alert);
+        }
+    }
+</script>
+
+<script>
+    function checkValueMass(input, buttonId, alert) {
+        var valueOfInput = document.getElementById(input).value;
+        document.getElementById(alert).style.color = "red";
+
+        if (input == "input4") {
+            document.getElementById("input5").value = null;
+            document.getElementById("input6").value = null;
+            if (valueOfInput > 0) showButton(buttonId, alert);
+            else if (valueOfInput <= 0) hideButton(buttonId, alert);
+        }
+
+        if (input == "input5") {
+            document.getElementById("input4").value = null;
+            document.getElementById("input6").value = null;
+            if (valueOfInput > 0) showButton(buttonId, alert);
+            else if (valueOfInput <= 0) hideButton(buttonId, alert);
+        }
+
+        if (input == "input6") {
+            document.getElementById("input4").value = null;
+            document.getElementById("input5").value = null;
+            if (valueOfInput > 0) showButton(buttonId, alert);
+            else if (valueOfInput <= 0) hideButton(buttonId, alert);
+        }
+    }
+
+</script>
+<script>
+    function showButton(buttonId, alert) {
+        document.getElementById(alert).innerHTML = "Liczba OK";
+        document.getElementById(buttonId).disabled = false;
+    }
+</script>
+<script>
+    function hideButton(buttonId, alert) {
+        document.getElementById(alert).innerHTML = "Podaj liczbę większą od 0";
+        document.getElementById(buttonId).disabled = true;
+    }
+</script>
+
+
+<h1>Przelicznik długości</h1>
+<form method="post" action="ServletLenght">
+    <input type="text" id="input1" name="milimetrs" value="mm"
+           oninput="checkValueLenght('input1', 'submitLenght', 'alertLenght')"><br>
+    <input type="text" id="input2" name="centimetrs" value="cm"
+           oninput="checkValueLenght('input2', 'submitLenght', 'alertLenght')"><br>
+    <input type="text" id="input3" name="meters" value="m"
+           oninput="checkValueLenght('input3', 'submitLenght', 'alertLenght')"><br>
+    <input type="submit" id="submitLenght" name="wyślij" disabled>
+</form>
+<p id="alertLenght">&nbsp;</p>
+
+<h1>Przelicznik masy</h1>
+<form method="get" action="ServletMass">
+    <input type="text" id="input6" name="miligrams" value="mg" oninput="checkValueMass('input6', 'submitMass',
+    'alertMass')"><br>
+    <input type="text" id="input5" name="grams" value="g" oninput="checkValueMass('input5', 'submitMass',
+    'alertMass')"><br>
+    <input type="text" id="input4" name="kilograms" value="kg"
+           oninput="checkValueMass('input4', 'submitMass', 'alertMass')"><br>
+    <input type="submit" id="submitMass" name="wyślij" disabled>
+</form>
+<p id="alertMass">&nbsp;</p>
+
+</body>
+</html>
